@@ -1,0 +1,23 @@
+{
+  "name": "anime-md",
+  "version": "1.0.0",
+  "description": "Anime MD WhatsApp Bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "@whiskeysockets/baileys": "github:jamesdevoff/AnimeBails",
+    "canvas": "^2.11.2",
+    "pino": "^8.15.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "jamesdevoff",
+  "license": "MIT"
+}
