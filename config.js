@@ -1,74 +1,47 @@
-const fs = require('fs');
-const dotenv = require('dotenv');
+const fs = require('fs')
 
-if (fs.existsSync('.env')) {
-    dotenv.config({ path: '.env' });
+const config = {
+    owner: "-",
+    botNumber: "-",
+    setPair: "NIKA2026",
+    thumbUrl: "https://files.catbox.moe/bvkgr4.jpg",
+    session: "sessions",
+    status: {
+        public: true,
+        terminal: true,
+        reactsw: false
+    },
+    message: {
+        owner: "no, this is for owners only",
+        group: "this is for groups only",
+        admin: "this command is for admin only",
+        private: "this is specifically for private chat"
+    },
+    settings: {
+        title: "NIKAV20",
+        packname: 'NIKA V25',
+        description: "this script was created by Depayy",
+        author: 'https://www.kyuurzy.tech',
+        footer: "Nika - 2026`"
+    },
+    newsletter: {
+        name: "LuxOfficial",
+        id: "120363422684021546@newsletter"
+    },
+    socialMedia: {
+        YouTube: "https://youtube.com/@justinofficial-id",
+        GitHub: "https://github.com/kiuur",
+        Telegram: "https://t.me/luxoffc",
+        ChannelWA: "https://whatsapp.com/channel/0029Vb7gbaPLNSa6B8zOHm3T"
+    }
 }
 
-module.exports = {
-    // ===========================================================
-    // 1. CONFIGURATION DE BASE (Session & Database)
-    // ===========================================================
-    SESSION_ID: process.env.SESSION_ID || "MINI BOT", 
-    MONGODB_URI: process.env.MONGODB_URI, // ⚠️ Doit être défini dans les variables d'environnement Railway — aucune valeur par défaut
-    
-    // ===========================================================
-    // 2. INFORMATIONS DU BOT
-    // ===========================================================
-    PREFIX: process.env.PREFIX || '.',
-    OWNER_NUMBER: process.env.OWNER_NUMBER || '', // Mettez VOTRE numéro dans les variables d'environnement Railway
-    BOT_NAME: "Queen Akira Mini",
-    BOT_FOOTER: '© ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴀᴋɪʀᴀ ᴛᴇᴄʜ',
-    
-    // Mode de travail : public, private, group, inbox
-    WORK_TYPE: process.env.WORK_TYPE || "public", 
-    
-    // ===========================================================
-    // 3. FONCTIONNALITÉS AUTOMATIQUES (STATUTS)
-    // ===========================================================
-    AUTO_VIEW_STATUS: process.env.AUTO_VIEW_STATUS || 'true', // Voir automatiquement les statuts
-    AUTO_LIKE_STATUS: process.env.AUTO_LIKE_STATUS || 'true', // Liker automatiquement les statuts
-    AUTO_LIKE_EMOJI: ['❤️', '🌹', '✨', '🥰', '🌹', '😍', '💞', '💕', '☺️', '🤗'], 
-    
-    AUTO_STATUS_REPLY: process.env.AUTO_STATUS_REPLY || 'false', // Répondre aux statuts
-    AUTO_STATUS_MSG: process.env.AUTO_STATUS_MSG || '🤗', // Message de réponse
-    
-    // ===========================================================
-    // 4. FONCTIONNALITÉS DE CHAT & PRÉSENCE
-    // ===========================================================
-    READ_MESSAGE: process.env.READ_MESSAGE || 'false', // Marquer les messages comme lus (Blue Tick)
-    AUTO_TYPING: process.env.AUTO_TYPING || 'false', // Afficher "Écrit..."
-    AUTO_RECORDING: process.env.AUTO_RECORDING || 'false', // Afficher "Enregistre..."
-    
-    // ===========================================================
-    // 5. GESTION DES GROUPES
-    // ===========================================================
-    WELCOME_ENABLE: process.env.WELCOME_ENABLE || 'true',
-    GOODBYE_ENABLE: process.env.GOODBYE_ENABLE || 'true',
-    WELCOME_MSG: process.env.WELCOME_MSG || null, 
-    GOODBYE_MSG: process.env.GOODBYE_MSG || null, 
-    WELCOME_IMAGE: process.env.WELCOME_IMAGE || null, 
-    GOODBYE_IMAGE: process.env.GOODBYE_IMAGE || null,
-    
-    GROUP_INVITE_LINK: process.env.GROUP_INVITE_LINK || 'https://chat.whatsapp.com/GxUqp9JEeKQ2Lgz9s8cgVV?s=cl&p=a&ilr=0',
-    
-    // ===========================================================
-    // 6. SÉCURITÉ & ANTI-CALL
-    // ===========================================================
-    ANTI_CALL: process.env.ANTI_CALL || 'false', // Rejeter les appels
-    REJECT_MSG: process.env.REJECT_MSG || '*CALL LATER PLEASE ☺️🌹*',
-    
-    // ===========================================================
-    // 7. IMAGES & LIENS
-    // ===========================================================
-    IMAGE_PATH: 'https://files.catbox.moe/qiboje.jpg',
-    CHANNEL_LINK: 'https://whatsapp.com/channel/0029VbD12WiEawduxvyG252k',
-    
-    // ===========================================================
-    // 8. EXTERNAL API (Optionnel)
-    // ===========================================================
-    TELEGRAM_BOT_TOKEN: process.env.TELEGRAM_BOT_TOKEN || '',
-    TELEGRAM_CHAT_ID: process.env.TELEGRAM_CHAT_ID || ''
-    
-};
-  
+module.exports = config;
+
+let file = require.resolve(__filename)
+require('fs').watchFile(file, () => {
+  require('fs').unwatchFile(file)
+  console.log('\x1b[0;32m'+__filename+' \x1b[1;32mupdated!\x1b[0m')
+  delete require.cache[file]
+  require(file)
+})
